@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
+app.use('/', express.static(path.join(__dirname + '/dist/ng-assistant')));
 
 // error handler
 app.use((err, req, res, next) => {
