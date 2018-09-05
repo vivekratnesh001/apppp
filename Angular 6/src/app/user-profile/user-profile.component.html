@@ -1,0 +1,61 @@
+<div class="w3-container w3-black">
+        <div class="w3-row">
+          <div class="w3-col" style="width:20%"><p></p></div>
+          <div class="w3-col" style="width:60%">
+        <h1 class="w3-center">
+        <span >Welcome {{userDetails.fullName}}</span>
+        
+        </h1>
+        </div> 
+        <div class="w3-col" style="width:20%; padding-top:0.6em"><span class="w3-right-align" ><input type="button" (click)="onLogout()" value="Logout" /></span></div> 
+        </div>  
+</div>
+       
+<div class="w3-row">
+        <div class="w3-col" style="width:20%"><p></p></div>
+        <div class="w3-col "  style="width:60%; padding: 10px 0px">
+        <div class="w3-card w3-dark-white">
+        <h2 class="w3-center w3-text-black">Server Request Form</h2>
+
+                <div class="success" *ngIf="showSucessMessage">
+                         Request submitted successfully
+                </div>
+          
+                <!-- Error message -->
+                <div class="alert" *ngIf="serverErrorMessages">
+                {{serverErrorMessages}}
+                </div>
+                <form class="w3-container" #requestForm="ngForm" (ngSubmit)="onSubmit(requestForm)">
+                <input type="hidden" name="email" #email="ngModel" [(ngModel)]="emailId">
+                <!--input type="text" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" name="email" placeholder="email" required  [ngClass]="{'invalid-textbox' :requestForm.submitted && !email.valid }">
+                <input type="text" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" name="name" placeholder="Name" required  [ngClass]="{'invalid-textbox' :requestForm.submitted && !name.valid }"-->
+                <p><label>Project Name:</label></p>
+                <input class="w3-input" type="text" #projectname="ngModel" [(ngModel)]="employeeService.selectedEmployee.projectname" name="projectname" placeholder="Project Name" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !projectname.valid }">
+                <p><label>Data Center:</label></p>                
+                <select class="w3-select " style="width:85%" #datacenter="ngModel" [(ngModel)]="employeeService.selectedEmployee.datacenter"  name="datacenter" placeholder="Datacenter" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !datacenter.valid }">
+                                <option value="" disabled selected>Choose a Datacenter</option>
+                                <option value="India">India</option>
+                                <option value="UK">UK</option>
+                                <option value="USA">USA</option>
+                              </select>
+                <p><label>OS Type:</label></p>
+                <select class="w3-select" style="width:85%" #ostype="ngModel" [(ngModel)]="employeeService.selectedEmployee.ostype"  name="ostype" placeholder="OS Type" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !ostype.valid }">
+                                <option value="" disabled selected>Choose OS</option>
+                                <option value="Windows">Windows</option>
+                                <option value="Linux">Linux</option>                                
+                              </select><br>
+                <input class="w3-black" type="submit" value="Submit">
+                </form>
+            
+
+                </div>
+        </div>
+        <div class="w3-col" style="width:20%"><p></p></div>
+</div> 
+
+
+        
+        
+        
+
+

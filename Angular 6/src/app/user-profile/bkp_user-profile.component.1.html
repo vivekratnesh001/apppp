@@ -1,0 +1,59 @@
+<div class="w3-container w3-black w3-padding-16">
+        <div class="w3-row">
+          <div class="w3-col" style="width:20%"><p></p></div>
+          <div class="w3-col" style="width:60%">
+        <h1 class="w3-center">
+        <span >Welcome {{userDetails.fullName}}</span>
+        
+        </h1>
+        </div> 
+        <div class="w3-col" style="width:20%"><span class="w3-right-align" ><input type="button" (click)="onLogout()" value="Logout" /></span></div> 
+        </div>  
+</div>
+       
+<div class="w3-row">
+        <div class="w3-col" style="width:20%"><p></p></div>
+        <div class="w3-col "  style="width:60%">
+        <h2 class="w3-center">Server Request Form</h2>
+
+        <div class="success" *ngIf="showSucessMessage">
+                        Request submitted successfully
+        </div>
+                        
+                <!-- Error message -->
+                <div class="alert" *ngIf="serverErrorMessages">
+                {{serverErrorMessages}}
+                </div>
+                <form #requestForm="ngForm" (ngSubmit)="onSubmit(requestForm)">
+                <input type="hidden" name="email" #email="ngModel" [(ngModel)]="emailId">
+                <!--input type="text" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" name="email" placeholder="email" required  [ngClass]="{'invalid-textbox' :requestForm.submitted && !email.valid }">
+                <input type="text" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" name="name" placeholder="Name" required  [ngClass]="{'invalid-textbox' :requestForm.submitted && !name.valid }"-->
+                <label>Project Name:</label><br>
+                <input type="text" #position="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" name="Project Name" placeholder="position" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !position.valid }">
+                <br><label>Data Center:</label><br>
+                <input type="text" #office="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" name="Data Center" placeholder="office" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !office.valid }">
+                <br><label>OS Type:</label><br>
+                <input type="text" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" name="OS Type" placeholder="salary" required [ngClass]="{'invalid-textbox' :requestForm.submitted && !salary.valid }">
+
+                <input class="w3-black" type="submit" value="Submit">
+                </form>
+                <!-- Success message -->
+                <div class="success" *ngIf="showSucessMessage">
+                Updated successfully
+              </div>
+              
+              <!-- Error message -->
+              <div class="alert" *ngIf="serverErrorMessages">
+                {{serverErrorMessages}}
+              </div>
+
+        </div>
+        <div class="w3-col" style="width:20%"><p></p></div>
+</div> 
+
+
+        
+        
+        
+
+
